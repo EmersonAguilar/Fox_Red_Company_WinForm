@@ -53,5 +53,11 @@ namespace WindowsFormsApp1
         {
             this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Registro_de_productos producto = new Registro_de_productos();
+            producto.Show();
+        }
     }
 }
