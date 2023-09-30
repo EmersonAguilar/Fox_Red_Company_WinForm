@@ -226,7 +226,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "Formusuario";
-            this.Text = "Formusuario";
+            this.Text = "Formulario de Compra";
             this.Load += new System.EventHandler(this.Formusuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
