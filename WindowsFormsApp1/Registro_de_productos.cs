@@ -52,5 +52,10 @@ namespace WindowsFormsApp1
             textBox3.Text = "";
             textBox4.Text = "";
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
