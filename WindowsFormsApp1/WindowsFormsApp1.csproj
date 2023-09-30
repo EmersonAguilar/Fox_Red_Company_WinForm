@@ -75,6 +75,16 @@
     <Compile Include="Registro_de_productos.Designer.cs">
       <DependentUpon>Registro_de_productos.cs</DependentUpon>
     </Compile>
+    <Compile Include="usuariosDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>usuariosDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="usuariosDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>usuariosDataSet1.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,9 +115,34 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="usuariosDataSet.xsc">
+      <DependentUpon>usuariosDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="usuariosDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>usuariosDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="usuariosDataSet.xss">
+      <DependentUpon>usuariosDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="usuariosDataSet1.xsc">
+      <DependentUpon>usuariosDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="usuariosDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>usuariosDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="usuariosDataSet1.xss">
+      <DependentUpon>usuariosDataSet1.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

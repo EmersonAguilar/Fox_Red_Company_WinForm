@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             SqlCommand Comando1 = new SqlCommand(Insertar, Conexion);
             Comando1.Parameters.AddWithValue("@Nombre", textBox1.Text);
             Comando1.Parameters.AddWithValue("@Producto", textBox2.Text);
-            Comando1.Parameters.AddWithValue("Telefono", textBox3.Text);
+            Comando1.Parameters.AddWithValue("@Telefono", textBox3.Text);
             Comando1.Parameters.AddWithValue("@Dirección", textBox4.Text);
             Comando1.Parameters.AddWithValue("@Correo", textBox5.Text);
             Comando1.ExecuteNonQuery();
@@ -58,6 +58,13 @@ namespace WindowsFormsApp1
         {
             Registro_de_productos producto = new Registro_de_productos();
             producto.Show();
+        }
+
+        private void Formadministrador_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'usuariosDataSet1.probedores' Puede moverla o quitarla según sea necesario.
+            this.probedoresTableAdapter.Fill(this.usuariosDataSet1.probedores);
+
         }
     }
 }
