@@ -102,6 +102,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Registro_de_productos.resx">
       <DependentUpon>Registro_de_productos.cs</DependentUpon>
@@ -143,6 +144,21 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pago.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\61T85CGI4ZL.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\71EFEN6lHbL._AC_UF894,1000_QL80_.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\audifonos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\teclado.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
