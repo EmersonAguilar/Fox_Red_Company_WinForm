@@ -13,6 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class Formadministrador : Form
     {
+
+        
         public Formadministrador()
         {
             InitializeComponent();
@@ -44,6 +46,26 @@ namespace WindowsFormsApp1
             dataGridView1.DataSource = xDataTable;
             Conexion.Close();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SqlConnection Conexion = ComunDB.ObtenerConexion();
+
+            string Insertar = "INSERT INTO probedores VALUES(@Nombre,@Producto,@Telefono,@Dirección,@Correo)";
+            SqlCommand Comando2 = new SqlCommand(Insertar, Conexion);
+            Comando2.Parameters.AddWithValue("@Nombre", textBox1.Text);
+            Comando2.Parameters.AddWithValue("@Producto", textBox2.Text);
+            Comando2.Parameters.AddWithValue("@Telefono", textBox3.Text);
+            Comando2.Parameters.AddWithValue("@Dirección", textBox4.Text);
+            Comando2.Parameters.AddWithValue("@Correo", textBox5.Text);
+            Comando2.ExecuteNonQuery();
+            Conexion.Close();
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
         }
     }
 }
