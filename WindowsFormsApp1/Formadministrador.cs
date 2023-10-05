@@ -96,5 +96,30 @@ namespace WindowsFormsApp1
             Conexion.Close();
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //editar 
+            SqlConnection Conexion = ComunDB.ObtenerConexion();
+
+            string actualizar;
+
+            actualizar = "UPDATE probedores Nombre Producto Telefono Dirección WHERE Correo LIKE @co";
+            SqlCommand comando5 = new SqlCommand(actualizar, Conexion);
+            comando5.Parameters.AddWithValue("Nombre", textBox1.Text);
+            comando5.Parameters.AddWithValue("Producto", textBox2.Text);
+            comando5.Parameters.AddWithValue("Telefono", textBox3.Text);
+            comando5.Parameters.AddWithValue("Dirección", textBox4.Text);
+            comando5.Parameters.AddWithValue("@co", textBox5.Text);
+            comando5.ExecuteNonQuery();
+            MessageBox.Show("Prende a escribir menso...");
+            Conexion.Close();
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+
+        }
     }
 }
