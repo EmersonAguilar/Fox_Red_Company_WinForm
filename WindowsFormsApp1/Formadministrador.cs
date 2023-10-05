@@ -18,43 +18,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        SqlConnection Conexion;
-        SqlDataReader Leer;
-
-
-        public void leer()
-        {
-            string CadenadeConexion = "Data Source=DESKTOP-FUUIGHB\\SQLEXPRESS;Initial Catalog=usuarios;integrated security=true";
-            Conexion = new SqlConnection(CadenadeConexion);
-            Conexion.Open();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            leer();
-            string Insertar = "INSERT INTO probedores VALUES(@Nombre,@Producto,@Telefono,@Dirección,@Correo)";
-            SqlCommand Comando1 = new SqlCommand(Insertar, Conexion);
-            Comando1.Parameters.AddWithValue("@Nombre", textBox1.Text);
-            Comando1.Parameters.AddWithValue("@Producto", textBox2.Text);
-            Comando1.Parameters.AddWithValue("@Telefono", textBox3.Text);
-            Comando1.Parameters.AddWithValue("@Dirección", textBox4.Text);
-            Comando1.Parameters.AddWithValue("@Correo", textBox5.Text);
-            Comando1.ExecuteNonQuery();
-            Conexion.Close();
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             Registro_de_productos producto = new Registro_de_productos();
@@ -68,45 +31,19 @@ namespace WindowsFormsApp1
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
-            leer();
-            string borrar = "DELETE FROM probedores WHERE (@Nombre,@Producto,@Telefono,@Dirección,@Correo)";
-            SqlCommand comando4 = new SqlCommand(borrar, Conexion);
-            comando4.Parameters.AddWithValue("@Nombre", textBox1.Text);
-            comando4.Parameters.AddWithValue("@Producto", textBox2.Text);
-            comando4.Parameters.AddWithValue("@Telefono", textBox3.Text);
-            comando4.Parameters.AddWithValue("@Dirección", textBox4.Text);
-            comando4.Parameters.AddWithValue("@Correo", textBox5.Text);
-            comando4.ExecuteNonQuery();
-            MessageBox.Show("Registro borrado...");
-            Conexion.Close();
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
+            //para actualizar nuestro grid donde se muestran los resultados
+            //llamamos a la nuestra conexion de la clase ComunDB
+            SqlConnection Conexion = ComunDB.ObtenerConexion();
 
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            leer();
-            string editar = "UPDATE FROM probedores WHERE (@Nombre,@Producto,@Telefono,@Dirección,@Correo)";
-            SqlCommand comando4 = new SqlCommand(editar, Conexion);
-            comando4.Parameters.AddWithValue("@Nombre", textBox1.Text);
-            comando4.Parameters.AddWithValue("@Producto", textBox2.Text);
-            comando4.Parameters.AddWithValue("@Telefono", textBox3.Text);
-            comando4.Parameters.AddWithValue("@Dirección", textBox4.Text);
-            comando4.Parameters.AddWithValue("@Correo", textBox5.Text);
-            comando4.ExecuteNonQuery();
-            MessageBox.Show("Registro actualizado...");
+            SqlCommand Comando = new SqlCommand("SELECT * from probedores",Conexion);
+            SqlDataAdapter xadaptadorDatos = new SqlDataAdapter(Comando);
+            DataTable xDataTable = new DataTable();
+            xadaptadorDatos.Fill(xDataTable);
+            dataGridView1.DataSource = xDataTable;
             Conexion.Close();
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
+
         }
     }
 }
