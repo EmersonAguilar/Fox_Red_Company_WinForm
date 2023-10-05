@@ -21,7 +21,6 @@ namespace WindowsFormsApp1
         SqlConnection Conexion;
         SqlDataReader Leer;
 
-        public int index { get; set; }
 
         public void leer()
         {
@@ -71,19 +70,43 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            index = dataGridView1.CurrentCell.RowIndex;
-            dataGridView1.Rows.RemoveAt(index);
+            leer();
+            string borrar = "DELETE FROM proveedores WHERE (@Nombre,@Producto,@Telefono,@Dirección,@Correo)";
+            SqlCommand comando4 = new SqlCommand(borrar, Conexion);
+            comando4.Parameters.AddWithValue("@Nombre", textBox1.Text);
+            comando4.Parameters.AddWithValue("@Producto", textBox2.Text);
+            comando4.Parameters.AddWithValue("@Telefono", textBox3.Text);
+            comando4.Parameters.AddWithValue("@Dirección", textBox4.Text);
+            comando4.Parameters.AddWithValue("@Correo", textBox5.Text);
+            comando4.ExecuteNonQuery();
+            MessageBox.Show("Registro borrado...");
+            Conexion.Close();
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            DataGridViewRow newdata = dataGridView1.Rows[index];
-            newdata.Cells[0].Value = textBox1.Text;
-            newdata.Cells[1].Value = textBox2.Text;
-            newdata.Cells[2].Value = textBox3.Text;
-            newdata.Cells[3].Value = textBox4.Text;
-            newdata.Cells[4].Value = textBox5.Text;
+            leer();
+            string editar = "UPDATE FROM proveedores WHERE (@Nombre,@Producto,@Telefono,@Dirección,@Correo)";
+            SqlCommand comando4 = new SqlCommand(editar, Conexion);
+            comando4.Parameters.AddWithValue("@Nombre", textBox1.Text);
+            comando4.Parameters.AddWithValue("@Producto", textBox2.Text);
+            comando4.Parameters.AddWithValue("@Telefono", textBox3.Text);
+            comando4.Parameters.AddWithValue("@Dirección", textBox4.Text);
+            comando4.Parameters.AddWithValue("@Correo", textBox5.Text);
+            comando4.ExecuteNonQuery();
+            MessageBox.Show("Registro actualizado...");
+            Conexion.Close();
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
         }
     }
 }
