@@ -121,5 +121,28 @@ namespace WindowsFormsApp1
             textBox5.Text = "";
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //Borrar
+            SqlConnection Conexion = ComunDB.ObtenerConexion();
+            string Borrar = "DELETE FROM probedores WHERE Nombre LIKE @no";
+            SqlCommand comando4 = new SqlCommand(Borrar, Conexion);
+            comando4.Parameters.AddWithValue("@no", textBox1.Text);
+            comando4.ExecuteNonQuery();
+            MessageBox.Show("Este boton borra los errores de tu vida..");
+            Conexion.Close();
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
