@@ -21,6 +21,8 @@ namespace WindowsFormsApp1
         SqlConnection Conexion;
         SqlDataReader Leer;
 
+        public int index { get; set; }
+
         public void leer()
         {
             string CadenadeConexion = "Data Source=DESKTOP-FUUIGHB\\SQLEXPRESS;Initial Catalog=usuarios;integrated security=true";
@@ -65,6 +67,23 @@ namespace WindowsFormsApp1
             // TODO: esta línea de código carga datos en la tabla 'usuariosDataSet1.probedores' Puede moverla o quitarla según sea necesario.
             this.probedoresTableAdapter.Fill(this.usuariosDataSet1.probedores);
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            index = dataGridView1.CurrentCell.RowIndex;
+            dataGridView1.Rows.RemoveAt(index);
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow newdata = dataGridView1.Rows[index];
+            newdata.Cells[0].Value = textBox1.Text;
+            newdata.Cells[1].Value = textBox2.Text;
+            newdata.Cells[2].Value = textBox3.Text;
+            newdata.Cells[3].Value = textBox4.Text;
+            newdata.Cells[4].Value = textBox5.Text;
         }
     }
 }
