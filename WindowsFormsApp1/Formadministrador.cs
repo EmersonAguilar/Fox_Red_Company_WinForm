@@ -71,7 +71,7 @@ namespace WindowsFormsApp1
         private void button5_Click(object sender, EventArgs e)
         {
             leer();
-            string borrar = "DELETE FROM proveedores WHERE (@Nombre,@Producto,@Telefono,@Dirección,@Correo)";
+            string borrar = "DELETE FROM probedores WHERE (@Nombre,@Producto,@Telefono,@Dirección,@Correo)";
             SqlCommand comando4 = new SqlCommand(borrar, Conexion);
             comando4.Parameters.AddWithValue("@Nombre", textBox1.Text);
             comando4.Parameters.AddWithValue("@Producto", textBox2.Text);
@@ -92,7 +92,7 @@ namespace WindowsFormsApp1
         private void button4_Click(object sender, EventArgs e)
         {
             leer();
-            string editar = "UPDATE FROM proveedores WHERE (@Nombre,@Producto,@Telefono,@Dirección,@Correo)";
+            string editar = "UPDATE FROM probedores WHERE (@Nombre,@Producto,@Telefono,@Dirección,@Correo)";
             SqlCommand comando4 = new SqlCommand(editar, Conexion);
             comando4.Parameters.AddWithValue("@Nombre", textBox1.Text);
             comando4.Parameters.AddWithValue("@Producto", textBox2.Text);
