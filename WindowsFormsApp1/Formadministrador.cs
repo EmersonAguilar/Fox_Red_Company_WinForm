@@ -14,7 +14,9 @@ namespace WindowsFormsApp1
     public partial class Formadministrador : Form
     {
 
-        
+        //creamos una variable para el boton de buscar
+        private SqlDataReader leer;
+
         public Formadministrador()
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
+            //boton para actualizar la tabla
             //para actualizar nuestro grid donde se muestran los resultados
             //llamamos a la nuestra conexion de la clase ComunDB
             SqlConnection Conexion = ComunDB.ObtenerConexion();
@@ -50,6 +53,8 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //Boton de registrar
+
             SqlConnection Conexion = ComunDB.ObtenerConexion();
 
             string Insertar = "INSERT INTO probedores VALUES(@Nombre,@Producto,@Telefono,@Dirección,@Correo)";
@@ -66,6 +71,30 @@ namespace WindowsFormsApp1
             textBox3.Text = "";
             textBox4.Text = "";
             textBox5.Text = "";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //Boton de buscar
+
+            SqlConnection Conexion = ComunDB.ObtenerConexion();
+
+            string consulta = "SELECT Nombre,Producto,Telefono,Dirección,Correo FROM probedores WHERE Nombre LIKE @xx";
+
+            SqlCommand comando3 = new SqlCommand(consulta, Conexion);
+            comando3.Parameters.AddWithValue("@xx", textBox1.Text);
+            leer = comando3.ExecuteReader();
+            while (leer.Read())
+            {
+                textBox2.Text = Convert.ToString(leer["Producto"]);
+                textBox3.Text = Convert.ToString(leer["Telefono"]);
+                textBox4.Text = Convert.ToString(leer["Dirección"]);
+                textBox5.Text = Convert.ToString(leer["Correo"]);
+
+            }
+            leer.Close();
+            Conexion.Close();
+
         }
     }
 }
