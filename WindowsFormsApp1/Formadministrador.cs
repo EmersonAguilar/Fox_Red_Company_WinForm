@@ -104,13 +104,13 @@ namespace WindowsFormsApp1
 
             string actualizar;
 
-            actualizar = "UPDATE probedores Nombre Producto Telefono Dirección WHERE Correo LIKE @co";
+            actualizar = "UPDATE ";
             SqlCommand comando5 = new SqlCommand(actualizar, Conexion);
-            comando5.Parameters.AddWithValue("Nombre", textBox1.Text);
-            comando5.Parameters.AddWithValue("Producto", textBox2.Text);
+            comando5.Parameters.AddWithValue("@no", textBox1.Text);
+            comando5.Parameters.AddWithValue("@pro", textBox2.Text);
             comando5.Parameters.AddWithValue("Telefono", textBox3.Text);
             comando5.Parameters.AddWithValue("Dirección", textBox4.Text);
-            comando5.Parameters.AddWithValue("@co", textBox5.Text);
+            comando5.Parameters.AddWithValue("Correo", textBox5.Text);
             comando5.ExecuteNonQuery();
             MessageBox.Show("Prende a escribir menso...");
             Conexion.Close();
